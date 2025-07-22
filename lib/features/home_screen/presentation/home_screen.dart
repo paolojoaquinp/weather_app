@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -27,10 +28,10 @@ class HomeScreen extends StatelessWidget {
                 flex: 3,
                 child: WeatherDisplayWidget(),
               ),
-              Container(
-                margin: EdgeInsets.all(16),
-                child: HourlyForecastWidget(),
-              ),
+              // Container(
+              //   margin: EdgeInsets.all(16),
+              //   child: HourlyForecastWidget(),
+              // ),
               SizedBox(height: 20),
             ],
           ),
