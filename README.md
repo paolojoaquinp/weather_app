@@ -10,7 +10,6 @@ A mobile application developed in Flutter that provides real-time weather inform
 - **Geolocation**: Automatic weather based on your current location
 - **Modern Interface**: Intuitive and responsive design
 - **Multiple Units**: Celsius/Fahrenheit, km/h, mph
-- **Dark/Light Mode**: Adaptive theme based on preferences
 
 ## 🚀 Installation
 
@@ -34,44 +33,19 @@ A mobile application developed in Flutter that provides real-time weather inform
    flutter pub get
    ```
 
-3. **Configure API Key**
+<!-- 3. **Configure API Key**
    - Get a free API key from [OpenWeatherMap](https://openweathermap.org/api)
    - Create a `.env` file in the project root
    - Add your API key:
      ```
      WEATHER_API_KEY=your_api_key_here
-     ```
+     ``` -->
 
-4. **Run the application**
+3. **Run the application**
    ```bash
    flutter run
    ```
 
-## 🏗️ Project Structure
-
-```
-lib/
-├── main.dart                 # Application entry point
-├── models/                   # Data models
-│   ├── weather_model.dart
-│   └── forecast_model.dart
-├── services/                 # Services and APIs
-│   ├── weather_service.dart
-│   └── location_service.dart
-├── screens/                  # Application screens
-│   ├── home_screen.dart
-│   ├── search_screen.dart
-│   └── settings_screen.dart
-├── widgets/                  # Reusable components
-│   ├── weather_card.dart
-│   ├── forecast_item.dart
-│   └── custom_app_bar.dart
-├── utils/                    # Utilities and helpers
-│   ├── constants.dart
-│   └── helpers.dart
-└── themes/                   # Themes and styles
-    ├── app_theme.dart
-    └── colors.dart
 ```
 
 ## 📦 Main Dependencies
@@ -80,27 +54,20 @@ lib/
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.1.0              # HTTP requests
-  geolocator: ^10.1.0       # Geolocation
-  flutter_dotenv: ^5.1.0    # Environment variables
-  provider: ^6.1.1          # State management
-  cached_network_image: ^3.3.0  # Image caching
-  intl: ^0.19.0             # Internationalization
+  dio:               # HTTP requests
+  location: ^10.1.0       # Geolocation
+  flutter_bloc: # State managment
 ```
 
 ## 🌐 API Used
 
 This project uses the [OpenWeatherMap API](https://openweathermap.org/api) to get weather data:
 
-- **Current Weather Data**: Current weather information
-- **5 Day Weather Forecast**: 5-day forecast
-- **Geocoding API**: Convert city names to coordinates
-
-## 📱 Screenshots
+<!-- ## 📱 Screenshots
 
 | Main Screen | Search | Settings |
 |:-----------:|:------:|:--------:|
-| *[Add screenshot]* | *[Add screenshot]* | *[Add screenshot]* |
+| *[Add screenshot]* | *[Add screenshot]* | *[Add screenshot]* | -->
 
 ## 🔧 Configuration
 
