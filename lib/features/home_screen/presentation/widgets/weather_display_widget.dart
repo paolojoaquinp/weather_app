@@ -51,6 +51,16 @@ class WeatherDisplayWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: 10),
+        // Weather Location
+        Text(
+          '${weather.name}, ${weather.sys.country}',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.white.withOpacity(0.9),
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        SizedBox(height: 10),
         // Description
         Text(
           weatherDescription?.description ?? 'No description',
@@ -63,7 +73,7 @@ class WeatherDisplayWidget extends StatelessWidget {
         SizedBox(height: 8),
         // Min/Max Temperature
         Text(
-          'Max: ${weather.main.temp.round()}°  Min: ${weather.main.temp.round()}°',
+          'Temp: ${weather.main.temp.round()}°',
           style: TextStyle(
             fontSize: 14,
             color: Colors.white.withOpacity(0.8),
