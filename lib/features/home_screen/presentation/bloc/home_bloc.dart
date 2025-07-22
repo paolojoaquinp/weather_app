@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_weather_app/features/home_screen/data/models/forecast_model.dart';
 import 'package:flutter_weather_app/features/home_screen/data/models/weather_model.dart';
+import 'package:flutter_weather_app/features/home_screen/data/repository_impl/weather_repository_impl.dart';
 import 'package:flutter_weather_app/features/home_screen/domain/entities/forecast_entity.dart';
 import 'package:flutter_weather_app/features/home_screen/domain/entities/weather_entity.dart';
 import 'package:flutter_weather_app/features/home_screen/domain/repository/weather_repository.dart';
@@ -29,20 +30,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) async {
     emit(HomeBlocLoading());
-    await _fetchWeatherData(event.latitude, event.longitude, emit);
+    await _fetchWeatherData(event.latitude, event.longitude, emit, forceRefresh: false);
   }
 
   Future<void> _onRefreshWeatherData(
     RefreshWeatherData event,
     Emitter<HomeState> emit,
   ) async {
-    await _fetchWeatherData(event.latitude, event.longitude, emit);
+    await _fetchWeatherData(event.latitude, event.longitude, emit, forceRefresh:false);
   }
 
   Future<void> _fetchWeatherData(
     double latitude,
     double longitude,
     Emitter<HomeState> emit,
+    {bool forceRefresh = false,}
   ) async {
     emit(HomeBlocLoading());
     // fetch latitude and longitude from location service
@@ -71,6 +73,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       final Result<WeatherEntity, String>  weatherResult = await _weatherRepository.getCurrentWeather(
         lat: latitude,
         lng: longitude,
+        forceRefresh: forceRefresh,
+        customCacheDuration: const Duration(minutes: 60), // Custom cache duration
       );
 
       final Result<ForecastEntity, String>  forecastResult = await _weatherRepository.getForecast(
@@ -98,5 +102,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } catch (e) {
       emit(HomeBlocError(message: 'Unexpected error: $e'));
     }
+  }
+
+    // Método adicional para limpiar caché si necesitas
+  Future<void> clearCache() async {
+    if (_weatherRepository is WeatherRepositoryImpl) {
+      await (_weatherRepository as WeatherRepositoryImpl).clearAllCache();
+    }
+  }
+
+  // Método para verificar si hay datos en caché
+  Future<bool> hasCachedDataForLocation(double lat, double lng) async {
+    if (_weatherRepository is WeatherRepositoryImpl) {
+      return await (_weatherRepository as WeatherRepositoryImpl).hasCachedData(
+        lat: lat, 
+        lng: lng,
+      );
+    }
+    return false;
   }
 }

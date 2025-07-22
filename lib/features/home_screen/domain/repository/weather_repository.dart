@@ -6,10 +6,14 @@ abstract class WeatherRepository {
   Future<Result<WeatherEntity, String>> getCurrentWeather({
     required double lat,
     required double lng,
+    bool forceRefresh = false,
+    Duration? customCacheDuration,
   });
 
   Future<Result<ForecastEntity, String>> getForecast({
     required double lat,
     required double lng,
+    bool forceRefresh = false,
+    Duration? customCacheDuration,
   });
 }
