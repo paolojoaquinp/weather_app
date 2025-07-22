@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/features/home_screen/presentation/home_screen.dart';
-import 'package:flutter_weather_app/features/shared/splash_screen.dart';
+import 'package:flutter_weather_app/features/shared/onboarding_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/': (context) => SplashScreen(),
+        '/': (context) => OnboardingScreen(),
         '/home': (context) =>  HomeScreen(),
       },
     );
