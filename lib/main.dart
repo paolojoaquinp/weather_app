@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/features/home_screen/presentation/home_screen.dart';
+import 'package:flutter_weather_app/features/shared/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,14 +11,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+        primarySwatch: Colors.blue,
       ),
+      routes: {
+        '/': (context) => SplashScreen(),
+        '/home': (context) =>  HomeScreen(),
+      },
     );
   }
 }

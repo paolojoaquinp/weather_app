@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class HomeScreen extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
