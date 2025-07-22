@@ -57,6 +57,7 @@ class OnboardingScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle navigation
+                      Navigator.pushReplacementNamed(context, '/home');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFFDD835),
